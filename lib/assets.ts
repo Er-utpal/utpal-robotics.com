@@ -64,6 +64,12 @@ export const assets = {
     width: 2400,
     height: 902,
   },
+  founder: {
+    src: "/resources/founder.jpg",
+    alt: "Utpal Kant, founder of Utpal Robotics.",
+    width: 377,
+    height: 471,
+  },
   logo: {
     src: "/resources/logo.png",
     alt: "Utpal Robotics",

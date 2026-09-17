@@ -55,7 +55,8 @@ Set `onWhite: true` for product shots taken against a white backdrop. Those are
 rendered with `mix-blend-mode: multiply` so they sit on light surfaces with no
 visible box — which also means they should never be placed on a dark section.
 
-**Products, projects, subject areas and services — `lib/content.ts`.** Typed
+**Products, projects, subject areas, services and the founder's selected work
+— `lib/content.ts`.** Typed
 arrays; add an entry and it appears in the relevant layouts. Projects and
 domains accept `image: null` and fall back to a dark statement panel, so an
 entry without a photograph still looks deliberate.
@@ -65,10 +66,8 @@ entry without a photograph still looks deliberate.
 - `profiles` — LinkedIn and GitHub, both `null` by default. Set a URL and that
   link appears in the footer and on the contact page; left null, nothing
   renders.
-- `founder` — `null` by default, which hides the founder section on the About
-  page entirely. Fill in the name, role, a short first-person statement, a
-  paragraph or two of background, an optional portrait and a LinkedIn URL, and
-  the section appears. There is a worked example in the comment above it.
+- `founder` — name, role, discipline, positioning sentence, focus and portrait
+  for the About page. Setting it to `null` hides the founder section entirely.
 - `url` — used for canonical and Open Graph URLs. Set `NEXT_PUBLIC_SITE_URL` in
   the Vercel project, or edit the fallback once the domain is live.
 

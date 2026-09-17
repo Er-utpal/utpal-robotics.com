@@ -1,4 +1,4 @@
-import type { Asset } from "./assets";
+import { assets, type Asset } from "./assets";
 
 /**
  * Global site configuration.
@@ -26,51 +26,60 @@ export const site = {
  * it null and nothing renders. Nothing here is ever invented — add a profile
  * only once the account genuinely exists.
  */
-export const profiles: { label: string; href: string | null }[] = [
-  { label: "LinkedIn", href: null },
-  { label: "GitHub", href: null },
+export const profiles: {
+  label: string;
+  href: string | null;
+  /** What a visitor will actually find there. */
+  description: string;
+}[] = [
+  {
+    label: "LinkedIn",
+    href: "https://in.linkedin.com/in/utpal-kant-uav",
+    description: "Professional profile",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/Er-utpal",
+    description: "Engineering projects",
+  },
 ];
 
 /** Only the profiles that have a real URL behind them. */
 export const activeProfiles = profiles.filter(
-  (profile): profile is { label: string; href: string } => Boolean(profile.href),
+  (profile): profile is { label: string; href: string; description: string } =>
+    Boolean(profile.href),
 );
 
 /**
  * The person behind the company.
  *
- * Left null until the real details are supplied — the About page simply skips
- * the section, exactly as it does for an unconfigured profile link. Fill every
- * field with verifiable fact: no invented credentials, titles or history.
- *
- * `portrait` points at an entry in `lib/assets.ts` (add the photograph there
- * first). Without one the section still works — the statement runs full width.
- *
- * Example:
- *
- *   export const founder: Founder | null = {
- *     name: "…",
- *     role: "Founder",
- *     statement:
- *       "I started Utpal Robotics because …",
- *     bio: ["…", "…"],
- *     portrait: assets.founder,
- *     linkedin: "https://www.linkedin.com/in/…",
- *   };
+ * Every field is documented fact. Nothing here is inferred, rounded up or
+ * padded out — if something cannot be verified it is left out rather than
+ * guessed at. The About page skips any part that is null.
  */
 export type Founder = {
   name: string;
-  /** e.g. "Founder" or "Founder & Engineer" — whatever is accurate. */
+  /** Relationship to the company. */
   role: string;
-  /** A short first-person line, set in display type. Two sentences at most. */
-  statement: string;
-  /** Background, in the founder's own voice. One or two paragraphs. */
-  bio: string[];
+  /** Engineering discipline, stated as they state it themselves. */
+  discipline: string;
+  /** Positioning sentence, set in larger type. */
+  lead: string;
+  /** What the work actually covers. */
+  focus: string;
   portrait: Asset | null;
-  linkedin: string | null;
 };
 
-export const founder: Founder | null = null;
+export const founder: Founder | null = {
+  name: "Utpal Kant",
+  role: "Founder, Utpal Robotics",
+  discipline: "Autonomous UAV Systems Engineer",
+  lead:
+    "Utpal Kant is an autonomous UAV systems engineer and the founder of Utpal Robotics, focused on making practical robotics and autonomous systems more accessible to students, builders and emerging engineering teams.",
+  focus:
+    "His work spans UAV systems, flight control, embedded systems, robotics, autonomous systems, quadruped robotics and practical robotics education.",
+  portrait: assets.founder,
+};
 
 export const navigation = [
   { href: "/products", label: "Products" },

@@ -280,3 +280,72 @@ export const enquiryTopics = [
   "Custom project",
   "Other",
 ] as const;
+
+/* -------------------------------------------------------------------------- */
+/* Selected work — the founder's documented engineering record                 */
+/* -------------------------------------------------------------------------- */
+
+export type WorkItem = {
+  index: string;
+  name: string;
+  /** Short qualifier shown beside the name, e.g. a year range. */
+  meta?: string;
+  description: string;
+  /** Verifiable specifics: award lines, patent numbers, dates. */
+  details?: string[];
+  link?: { href: string; label: string };
+};
+
+/**
+ * Documented achievements only. Each entry states what happened and nothing
+ * beyond it — no inferred significance, no commercial claims, no rounding up.
+ */
+export const selectedWork: WorkItem[] = [
+  {
+    index: "01",
+    name: "Smart India Hackathon",
+    meta: "2019 / 2020",
+    description: "Entered both the hardware and the software editions.",
+    details: [
+      "Winner — Hardware Edition, 2019",
+      "Winner — Software Edition, 2020",
+    ],
+  },
+  {
+    index: "02",
+    name: "Custom STM32H723 ArduPilot Flight Controller",
+    description:
+      "A working flight-controller prototype built on an STM32H723 board, running ArduPilot firmware with IMU, barometer, GPS, magnetometer and MAVLink integration.",
+    link: {
+      href: "https://github.com/Er-utpal/WeAct723-Ardupilot",
+      label: "View on GitHub",
+    },
+  },
+  {
+    index: "03",
+    name: "Quadruped Robotic Platform",
+    description:
+      "A servo-actuated quadruped designed and developed with gait sequencing, wireless control and mechanical optimisation — part of the wider focus on accessible platforms for education and experimentation.",
+  },
+  {
+    index: "04",
+    name: "Non-Invasive IoT Water Flow Meter",
+    description:
+      "A strap-on measurement system that reads flow through an existing pipe without cutting into it.",
+    details: ["Patent 202031038046", "Issued 23 August 2023"],
+  },
+  {
+    index: "05",
+    name: "Sky Racer",
+    meta: "2nd place",
+    description:
+      "Second place in a drone-racing challenge organised by Startup Bihar at the IIT Patna incubation centre.",
+    details: ["₹40,000 prize"],
+  },
+  {
+    index: "06",
+    name: "Bharat Drone Shakti 2023",
+    description:
+      "Presented a rescue-drone system at Hindon Airbase as part of the VAMA SKYLIGHT team.",
+  },
+];
