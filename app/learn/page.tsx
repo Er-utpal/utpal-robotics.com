@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { PageHero } from "@/components/page-hero";
@@ -7,12 +9,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { assets } from "@/lib/assets";
 import { tracks } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Learn",
+export const metadata: Metadata = pageMetadata({
+  title: "Learn Robotics by Building Real Machines",
   description:
-    "Practical robotics learning with Utpal Robotics — fundamentals, drones, embedded systems, control, robotics software, computer vision, autonomy and simulation, taught on real hardware.",
-  alternates: { canonical: "/learn" },
-};
+    "Practical robotics education: fundamentals, drones, embedded systems, control, robotics software, computer vision, autonomy and simulation, learned on hardware you build.",
+  path: "/learn",
+});
 
 const formats = [
   {
@@ -44,6 +46,9 @@ const formats = [
 export default function LearnPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Learn", path: "/learn" }]}
+      />
       <PageHero
         eyebrow="Learn"
         title="Understanding follows building."
@@ -52,7 +57,7 @@ export default function LearnPage() {
         imagePosition="50% 45%"
         caption="Workshop — where the learning actually happens"
       >
-        <ButtonLink href="/products/kits" variant="solid-light" arrow>
+        <ButtonLink href="/products/robotics-kits" variant="solid-light" arrow>
           Start building
         </ButtonLink>
       </PageHero>
@@ -145,8 +150,9 @@ export default function LearnPage() {
                 they are finished. We would rather release something worth
                 reading late than list a curriculum that does not exist yet.
               </p>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
                 <TextLink href="/contact">Ask what is available</TextLink>
+                <TextLink href="/projects">The machines behind it</TextLink>
               </div>
             </div>
           </Reveal>
@@ -158,7 +164,7 @@ export default function LearnPage() {
         title="Start building."
         body="Pick a machine, put it together, and let the questions come from the hardware."
       >
-        <ButtonLink href="/products/kits" variant="solid-light" arrow>
+        <ButtonLink href="/products/robotics-kits" variant="solid-light" arrow>
           Explore kits
         </ButtonLink>
         <ButtonLink href="/contact" variant="outline-light">

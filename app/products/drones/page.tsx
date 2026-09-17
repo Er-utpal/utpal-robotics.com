@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
+import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { Media } from "@/components/media";
 import { Reveal } from "@/components/reveal";
@@ -7,12 +9,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { VideoSection } from "@/components/video-section";
 import { assets } from "@/lib/assets";
 
-export const metadata: Metadata = {
-  title: "Drones",
+export const metadata: Metadata = pageMetadata({
+  title: "Drones & Quadcopter Platforms",
   description:
-    "Learning drones, FPV airframes, autonomous quadcopters and custom drone platforms built by Utpal Robotics for people who want to fly and to understand what they are flying.",
-  alternates: { canonical: "/products/drones" },
-};
+    "Learning drones, FPV airframes, autonomous quadcopters and custom drone systems, built so that flying them teaches you how they actually work.",
+  path: "/products/drones",
+});
 
 const platforms = [
   {
@@ -26,12 +28,17 @@ const platforms = [
     name: "Custom drone systems",
     description:
       "Platforms designed around a specific job: the airframe, what it carries, and the software that makes the two work together. Built with you, from the requirement up.",
+    href: "/services",
+    linkLabel: "How custom work runs",
   },
 ];
 
 export default function DronesPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: "Drones", path: "/products/drones" }]}
+      />
       <VideoSection
         hero
         eyebrow="Products — Drones"
@@ -73,6 +80,9 @@ export default function DronesPage() {
                   hover, FPV machines built for the feel of flying, and aircraft
                   carrying enough compute to navigate on their own.
                 </p>
+                <div className="mt-10">
+                  <TextLink href="/projects">See the aerial platforms</TextLink>
+                </div>
               </Reveal>
             </div>
           </div>
@@ -135,6 +145,11 @@ export default function DronesPage() {
                   <p className="body-text mt-5 max-w-lg text-slate">
                     {platform.description}
                   </p>
+                  {platform.href && (
+                    <div className="mt-7">
+                      <TextLink href={platform.href}>{platform.linkLabel}</TextLink>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             ))}
@@ -150,7 +165,7 @@ export default function DronesPage() {
         <ButtonLink href="/contact" variant="solid-light" arrow>
           Enquire
         </ButtonLink>
-        <ButtonLink href="/products/kits" variant="outline-light">
+        <ButtonLink href="/products/robotics-kits" variant="outline-light">
           Explore kits
         </ButtonLink>
       </CTASection>

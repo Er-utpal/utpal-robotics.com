@@ -22,51 +22,51 @@ export type Asset = {
 export const assets = {
   quadruped: {
     src: "/resources/quadruped.webp",
-    alt: "A black four-legged robot standing on asphalt, its actuators and wiring exposed.",
+    alt: "Quadruped robot platform standing on asphalt, its actuators and wiring left exposed.",
     width: 3000,
     height: 1688,
   },
   droneFlight: {
     src: "/resources/drone.webp",
-    alt: "A fixed-wing hybrid drone in flight, seen from below against bare winter trees.",
+    alt: "Fixed-wing hybrid drone in flight, seen from below against bare winter trees.",
     width: 819,
     height: 1024,
   },
   fpv: {
     src: "/resources/fpv.webp",
-    alt: "An FPV racing quadcopter with carbon arms and a forward-facing camera.",
+    alt: "FPV racing quadcopter with carbon-fibre arms and a forward-facing camera.",
     width: 1024,
     height: 1024,
     onWhite: true,
   },
   rover: {
     src: "/resources/rover.jpg",
-    alt: "An aluminium six-wheeled rover with a manipulator arm climbing over rock.",
+    alt: "Six-wheeled robotics rover with a manipulator arm climbing over rock.",
     width: 1800,
     height: 2695,
   },
   spider: {
     src: "/resources/spider.jpg",
-    alt: "A six-legged walking robot with servo-driven joints on a workshop bench.",
+    alt: "Six-legged spider robot with servo-driven joints on a workshop bench.",
     width: 700,
     height: 636,
   },
   swarm: {
     src: "/resources/swarm.jpg",
-    alt: "A line of identical multi-legged robots moving in formation.",
+    alt: "Robot swarm: a line of identical multi-legged robots moving in formation.",
     width: 600,
     height: 478,
     onWhite: true,
   },
   lab: {
     src: "/resources/lab.webp",
-    alt: "A robotics workshop: benches of hardware, test rigs and workstations under open ceilings.",
+    alt: "Robotics workshop with benches of hardware, test rigs and workstations under open ceilings.",
     width: 2400,
     height: 902,
   },
   founder: {
     src: "/resources/founder.jpg",
-    alt: "Utpal Kant, founder of Utpal Robotics.",
+    alt: "Utpal Kant, founder of Utpal Robotics and autonomous UAV systems engineer.",
     width: 377,
     height: 471,
   },
@@ -84,6 +84,6 @@ export const video = {
     poster: "/resources/fpv-flight-poster.webp",
     /** Described for screen readers in place of the moving image. */
     description:
-      "Aerial footage tracking a dirt track through high-altitude mountain terrain.",
+      "Aerial drone footage tracking a dirt track through high-altitude mountain terrain.",
   },
 } as const;

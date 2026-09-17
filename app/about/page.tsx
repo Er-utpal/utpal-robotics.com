@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { BreadcrumbSchema, FounderSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { FounderSection } from "@/components/founder-section";
@@ -10,12 +12,14 @@ import { SelectedWork } from "@/components/selected-work";
 import { assets } from "@/lib/assets";
 import { activeProfiles } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Utpal Robotics exists to make practical robotics more accessible. Founded by Utpal Kant, an autonomous UAV systems engineer working across UAV systems, flight control, embedded systems and quadruped robotics.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+  ogImage: { url: "/opengraph-image.jpg", alt: "Utpal Kant, founder of Utpal Robotics, and a quadruped robot platform" },
+  socialTitle: "About Utpal Robotics",
+});
 
 /** The loop the company is built around. */
 const beliefs = [
@@ -48,6 +52,9 @@ const beliefs = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "About", path: "/about" }]}
+      />
       <PageHero
         eyebrow="About"
         title="We build robotics to make robotics more accessible."
@@ -131,6 +138,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <FounderSchema />
       <FounderSection />
 
       {/* Selected work */}

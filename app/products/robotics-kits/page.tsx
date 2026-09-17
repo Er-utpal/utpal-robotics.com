@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { Media } from "@/components/media";
@@ -8,12 +10,12 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { assets } from "@/lib/assets";
 
-export const metadata: Metadata = {
-  title: "Robotics Kits",
+export const metadata: Metadata = pageMetadata({
+  title: "Robotics Kits for Students & Builders",
   description:
-    "Robotics kits from Utpal Robotics: hardware, assembly guidance, a written manual, demonstration video and example projects — so the machine you build ends up working.",
-  alternates: { canonical: "/products/kits" },
-};
+    "Robotics kits supplied with hardware, assembly guidance, a written manual, demonstration video and example projects, so a first machine actually ends up working.",
+  path: "/products/robotics-kits",
+});
 
 const included = [
   {
@@ -57,6 +59,9 @@ const included = [
 export default function KitsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: "Robotics Kits", path: "/products/robotics-kits" }]}
+      />
       <PageHero
         eyebrow="Products — Robotics Kits"
         title="Learn by building."
@@ -182,8 +187,9 @@ export default function KitsPage() {
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
                 <TextLink href="/contact">Enquire about a kit</TextLink>
+                <TextLink href="/projects">See what gets built</TextLink>
               </div>
             </Reveal>
           </div>

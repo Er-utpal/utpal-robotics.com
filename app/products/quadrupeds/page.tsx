@@ -1,18 +1,20 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
+import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { assets } from "@/lib/assets";
 
-export const metadata: Metadata = {
-  title: "Quadruped Robots",
+export const metadata: Metadata = pageMetadata({
+  title: "Quadruped Robots & Platforms",
   description:
-    "Four-legged robots from Utpal Robotics — practical platforms for locomotion, control, sensing, embedded systems and autonomy work on real hardware.",
-  alternates: { canonical: "/products/quadrupeds" },
-};
+    "Four-legged robot platforms for practical work on locomotion, control, sensing, embedded systems, robotics software and autonomy — on hardware you can put your hands on.",
+  path: "/products/quadrupeds",
+});
 
 const disciplines = [
   {
@@ -56,6 +58,9 @@ const disciplines = [
 export default function QuadrupedsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: "Quadrupeds", path: "/products/quadrupeds" }]}
+      />
       <PageHero
         eyebrow="Products — Quadrupeds"
         title="Four legs. One hard problem."
@@ -130,6 +135,12 @@ export default function QuadrupedsPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal>
+            <div className="mt-16 border-t border-ink/20 pt-10">
+              <TextLink href="/learn">Learn these on real hardware</TextLink>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -137,7 +148,7 @@ export default function QuadrupedsPage() {
       <section className="relative h-[52vh] min-h-[320px] overflow-hidden bg-ink md:h-[68vh]">
         <Image
           src={assets.quadruped.src}
-          alt="Close detail of the quadruped's leg actuators and wiring."
+          alt="Close detail of a quadruped robot's leg actuators, linkages and wiring."
           fill
           sizes="100vw"
           className="object-cover object-[22%_68%]"

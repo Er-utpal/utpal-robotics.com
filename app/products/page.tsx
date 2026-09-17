@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { Media } from "@/components/media";
@@ -6,12 +8,12 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { products } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Products",
+export const metadata: Metadata = pageMetadata({
+  title: "Robotics Products & Kits",
   description:
-    "Robotics kits, drones and quadruped platforms from Utpal Robotics — hardware you assemble, understand and keep building on.",
-  alternates: { canonical: "/products" },
-};
+    "Robotics kits, drone platforms and quadruped robots you assemble yourself — an engineering catalogue for students, builders and early-stage teams.",
+  path: "/products",
+});
 
 /** What each category is actually for — plain, checkable statements. */
 const detail: Record<string, string[]> = {
@@ -35,6 +37,9 @@ const detail: Record<string, string[]> = {
 export default function ProductsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }]}
+      />
       <PageHero
         eyebrow="Products"
         title="Robots you can build."
@@ -42,7 +47,7 @@ export default function ProductsPage() {
         tone="dark"
         height="short"
       >
-        <ButtonLink href="/products/kits" variant="solid-light" arrow>
+        <ButtonLink href="/products/robotics-kits" variant="solid-light" arrow>
           Start with a kit
         </ButtonLink>
         <ButtonLink href="/contact" variant="outline-light">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { DomainTile } from "@/components/domain-tile";
@@ -11,12 +12,13 @@ import { VideoSection } from "@/components/video-section";
 import { assets } from "@/lib/assets";
 import { domains, products, projects, services } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Utpal Robotics — Robotics Kits, Drones & Engineering",
   description:
     "Robotics kits, drones and quadruped platforms, plus learning resources and engineering support for students, builders and teams putting real machines together.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+  socialTitle: "Utpal Robotics — Robotics Kits, Drones & Engineering",
+});
 
 /** Layout for the "what we build" mosaic — deliberately uneven. */
 const domainLayout = [
@@ -214,7 +216,7 @@ export default function HomePage() {
 
           <Reveal delay={200}>
             <div className="mt-14 flex flex-wrap items-center gap-4">
-              <ButtonLink href="/products/kits" variant="solid-light" arrow>
+              <ButtonLink href="/products/robotics-kits" variant="solid-light" arrow>
                 Explore kits
               </ButtonLink>
               <ButtonLink href="/learn" variant="outline-light">

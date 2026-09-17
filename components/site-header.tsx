@@ -12,7 +12,7 @@ import { navigation, site } from "@/lib/site";
  * dark hero imagery and starts out transparent with light type.
  */
 const LIGHT_HERO_ROUTES = new Set([
-  "/products/kits",
+  "/products/robotics-kits",
   "/services",
   "/about",
   "/contact",
@@ -73,6 +73,7 @@ export function SiteHeader() {
             alt=""
             width={640}
             height={354}
+            sizes="40px"
             priority
             className={`w-8 transition-[width] duration-500 md:w-9 ${
               scrolled || menuOpen ? "md:w-8" : ""

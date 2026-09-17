@@ -6,7 +6,7 @@ const columns = [
   {
     title: "Products",
     links: [
-      { href: "/products/kits", label: "Robotics Kits" },
+      { href: "/products/robotics-kits", label: "Robotics Kits" },
       { href: "/products/drones", label: "Drones" },
       { href: "/products/quadrupeds", label: "Quadrupeds" },
       { href: "/products", label: "All products" },
@@ -34,6 +34,7 @@ export function SiteFooter() {
               alt=""
               width={640}
               height={354}
+              sizes="48px"
               className="w-11"
             />
             <p className="mt-6 max-w-xs text-[0.95rem] leading-relaxed text-white/55">

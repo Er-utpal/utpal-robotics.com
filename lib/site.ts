@@ -17,6 +17,15 @@ export const site = {
    * Set once a production domain is live — used for canonical + Open Graph URLs.
    */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://utpalrobotics.com",
+  /**
+   * ISO country code, used only in Organization structured data.
+   *
+   * Inferred from the founder's documented record — an Indian patent, Startup
+   * Bihar, IIT Patna, Hindon Airbase — rather than from a confirmed registered
+   * address. Confirm it, and add a locality and region here if you want the
+   * site to compete for local searches.
+   */
+  country: "IN" as string | null,
 } as const;
 
 /**

@@ -1,18 +1,20 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
+import { ButtonLink, TextLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
 import { assets } from "@/lib/assets";
 import { projects } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Projects",
+export const metadata: Metadata = pageMetadata({
+  title: "Robotics Projects & Autonomous Systems",
   description:
-    "Robotics work from Utpal Robotics — quadrupeds, rovers, aerial platforms, hexapods, swarm behaviour and experimental machines built to test ideas properly.",
-  alternates: { canonical: "/projects" },
-};
+    "Robotics projects from Utpal Robotics — quadrupeds, rovers, aerial platforms, hexapods, swarm behaviour and experimental machines built to test ideas properly.",
+  path: "/projects",
+});
 
 /** Deliberately uneven grid — a portfolio, not a product listing. */
 const layout = [
@@ -27,6 +29,9 @@ const layout = [
 export default function ProjectsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }]}
+      />
       {/* Split hero — the rover is a portrait photograph, so it gets a
           portrait frame instead of being cropped into a letterbox. */}
       <section className="flex flex-col bg-ink text-paper lg:min-h-[88vh] lg:flex-row lg:items-stretch">
@@ -71,6 +76,9 @@ export default function ProjectsPage() {
               platforms rather than finished products, and we would rather say
               less than claim more than a machine has actually done.
             </p>
+            <div className="mt-10">
+              <TextLink href="/products">Machines you can build yourself</TextLink>
+            </div>
           </Reveal>
 
           <div className="mt-24 grid gap-x-8 gap-y-20 md:mt-28 lg:grid-cols-12 lg:gap-y-8">

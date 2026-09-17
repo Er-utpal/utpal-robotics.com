@@ -84,7 +84,7 @@ export const products: Product[] = [
   {
     index: "01",
     name: "Robotics Kits",
-    href: "/products/kits",
+    href: "/products/robotics-kits",
     summary: "Hardware you assemble yourself, with the guidance to finish it.",
     description:
       "Buildable hardware for people starting out — supplied with assembly guidance, a manual, demonstration video and example projects so the machine ends up working, not shelved.",

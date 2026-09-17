@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SiteSchema } from "@/components/structured-data";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -47,6 +48,22 @@ export const metadata: Metadata = {
     description: site.description,
   },
   alternates: { canonical: "/" },
+  // Set GOOGLE_SITE_VERIFICATION in the hosting environment to have Next.js
+  // emit the verification meta tag. Unset, the tag is simply omitted.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -71,6 +88,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
+        <SiteSchema />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-ink focus:px-5 focus:py-3 focus:font-mono focus:text-[0.6875rem] focus:tracking-[0.16em] focus:text-paper focus:uppercase"

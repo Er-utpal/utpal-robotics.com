@@ -1,0 +1,1 @@
+Six-wheeled robotics rover with a manipulator arm

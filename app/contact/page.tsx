@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { activeProfiles, site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Get in touch with Utpal Robotics about robotics kits, drones, project guidance, consulting or a custom robotic system.",
-  alternates: { canonical: "/contact" },
-};
+    "Get in touch with Utpal Robotics about robotics kits, drones, quadruped platforms, project guidance, robotics consulting or a custom robotics or drone project.",
+  path: "/contact",
+  ogImage: { url: "/opengraph-image.jpg", alt: "Quadruped robot platform built by Utpal Robotics" },
+  socialTitle: "Contact Utpal Robotics",
+});
 
 const helpful = [
   "What you are trying to build, in a sentence or two",
@@ -21,6 +25,9 @@ const helpful = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]}
+      />
       <PageHero
         eyebrow="Contact"
         title={<>Let&rsquo;s build something.</>}

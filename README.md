@@ -102,8 +102,35 @@ reads as a real engineering company rather than a pitch deck.
   the viewport, pauses off-screen, and never autoplays for anyone who has asked
   for reduced motion — they get the poster frame and an explicit play control.
 
+## SEO
+
+- Every route sets its own title, description, canonical URL, Open Graph and
+  Twitter card through `pageMetadata` in `lib/seo.ts`.
+- Share images come from Next.js's `opengraph-image` file convention — one per
+  route, generated from the site's own photography. Routes without their own
+  image pass `ogImage` explicitly, because a page that declares `openGraph`
+  replaces the parent's object and would otherwise ship without one.
+- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and
+  `/robots.txt`. Add new routes to the list in `sitemap.ts`.
+- JSON-LD lives in `components/structured-data.tsx`: Organization and WebSite
+  site-wide, BreadcrumbList below the root, and Person on the About page.
+  There is deliberately no Product schema — it requires price, availability or
+  specification data that does not exist yet, and inventing it would both
+  breach the content policy and risk a structured-data penalty. Add it once
+  real product data lands.
+
 ## Deploying
 
-Import the repository into Vercel and accept the defaults. Optionally set
-`NEXT_PUBLIC_SITE_URL` to the production domain so canonical and Open Graph
-URLs resolve correctly.
+Import the repository into Vercel and accept the defaults, then set:
+
+- `NEXT_PUBLIC_SITE_URL` — the production domain, e.g.
+  `https://utpalrobotics.com`. Canonical URLs, Open Graph URLs, the sitemap and
+  the JSON-LD all derive from it, so set this before submitting anything to
+  Google.
+- `GOOGLE_SITE_VERIFICATION` — the token from the Search Console HTML-tag
+  verification method (the `content` value only, not the whole tag). Next.js
+  emits the meta tag when it is set and omits it when it is not. It is not a
+  secret, but it lives in the environment rather than in the repository.
+
+After the first deploy: verify the property in Google Search Console, submit
+`https://<domain>/sitemap.xml`, and request indexing for the homepage.

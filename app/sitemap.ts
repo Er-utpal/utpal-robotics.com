@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 const routes = [
   { path: "/", priority: 1 },
   { path: "/products", priority: 0.9 },
-  { path: "/products/kits", priority: 0.8 },
+  { path: "/products/robotics-kits", priority: 0.8 },
   { path: "/products/drones", priority: 0.8 },
   { path: "/products/quadrupeds", priority: 0.8 },
   { path: "/projects", priority: 0.7 },

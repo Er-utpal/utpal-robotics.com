@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/structured-data";
+import { pageMetadata } from "@/lib/seo";
 import { ButtonLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
 import { PageHero } from "@/components/page-hero";
@@ -6,12 +8,13 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { services } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = pageMetadata({
+  title: "Robotics Consulting & Custom Projects",
   description:
-    "Project guidance, consulting, prototyping and custom robotics and drone development from Utpal Robotics — for students, builders and engineering teams.",
-  alternates: { canonical: "/services" },
-};
+    "Project guidance, robotics consulting, prototyping, custom robotics and custom drone development for students, builders and engineering teams.",
+  path: "/services",
+  ogImage: { url: "/opengraph-image.jpg", alt: "Quadruped robot platform built by Utpal Robotics" },
+});
 
 const process = [
   {
@@ -37,6 +40,9 @@ const process = [
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]}
+      />
       <PageHero
         eyebrow="Services"
         title="Bring us the hard part."
