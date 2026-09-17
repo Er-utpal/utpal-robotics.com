@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { site } from "@/lib/site";
+import { activeProfiles, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -67,18 +67,24 @@ export default function ContactPage() {
               </div>
             </Reveal>
 
-            {site.github && (
+            {activeProfiles.length > 0 && (
               <Reveal delay={200}>
                 <div className="mt-12 border-t border-hairline pt-7">
                   <p className="label-mono text-slate">Elsewhere</p>
-                  <a
-                    href={site.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="display-sm mt-5 inline-block transition-colors duration-300 hover:text-slate"
-                  >
-                    GitHub
-                  </a>
+                  <ul className="mt-5 space-y-3">
+                    {activeProfiles.map(({ label, href }) => (
+                      <li key={label}>
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="display-sm inline-block transition-colors duration-300 hover:text-slate"
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Reveal>
             )}

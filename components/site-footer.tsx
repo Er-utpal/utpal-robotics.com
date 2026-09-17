@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { activeProfiles, site } from "@/lib/site";
 
 const columns = [
   {
@@ -76,15 +76,21 @@ export function SiteFooter() {
                 Start a conversation
               </Link>
             </div>
-            {site.github && (
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-6 inline-block font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-white/55 transition-colors duration-300 hover:text-paper"
-              >
-                GitHub
-              </a>
+            {activeProfiles.length > 0 && (
+              <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+                {activeProfiles.map(({ label, href }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-white/55 transition-colors duration-300 hover:text-paper"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </div>

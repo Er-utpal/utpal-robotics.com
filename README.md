@@ -62,8 +62,13 @@ entry without a photograph still looks deliberate.
 
 **Company details — `lib/site.ts`.** Contact address, navigation, and:
 
-- `github` — `null` by default. Set it to a real profile URL and the link
-  appears in the footer and on the contact page. Left null, nothing renders.
+- `profiles` — LinkedIn and GitHub, both `null` by default. Set a URL and that
+  link appears in the footer and on the contact page; left null, nothing
+  renders.
+- `founder` — `null` by default, which hides the founder section on the About
+  page entirely. Fill in the name, role, a short first-person statement, a
+  paragraph or two of background, an optional portrait and a LinkedIn URL, and
+  the section appears. There is a worked example in the comment above it.
 - `url` — used for canonical and Open Graph URLs. Set `NEXT_PUBLIC_SITE_URL` in
   the Vercel project, or edit the fallback once the domain is live.
 

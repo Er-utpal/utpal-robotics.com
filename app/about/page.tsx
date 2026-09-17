@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { CTASection } from "@/components/cta-section";
+import { FounderSection } from "@/components/founder-section";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -128,6 +129,8 @@ export default function AboutPage() {
           className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent"
         />
       </section>
+
+      <FounderSection />
 
       {/* Who it is for */}
       <section className="section-y bg-paper">
